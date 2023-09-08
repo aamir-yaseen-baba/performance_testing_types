@@ -7,11 +7,13 @@ export const options = {
 };
 
 export default () => {
-  const urlRes = http.get('https://test-api.k6.io');
+  const urlRes = http.get('https://developers.redhat.com/');
   sleep(1);
   // MORE STEPS
+  console.log(urlRes)
   check(urlRes, {
     'is status 200': (r) => r.status === 200,
+    'Response contains Build here. Go anywhere.': (r) => r.body.includes("Build here. Go anywhere.")
   });
   // Here you can have more steps or complex script
   // Step1
